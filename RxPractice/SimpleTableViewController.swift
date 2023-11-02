@@ -12,6 +12,8 @@ import SnapKit
 
 class SimpleTableViewController: UIViewController {
     
+    let viewModel = SimpleTableViewModel()
+    
     let tableView = {
         let view = UITableView()
         return view
@@ -30,11 +32,11 @@ class SimpleTableViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
-        let items = Observable.just(
-            (0..<20).map { "\($0)" }
-        )
+//        let items = Observable.just(
+//            (0..<20).map { "\($0)" }
+//        )
         
-        items
+        viewModel.items
             .bind(to: tableView.rx.items) { (tableView, row, element) in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
                 cell.textLabel?.text = "\(element) @ row \(row)"
@@ -45,30 +47,51 @@ class SimpleTableViewController: UIViewController {
         
         tableView.rx
             .modelSelected(String.self)
-            .subscribe(onNext:  { value in
+//            .subscribe(onNext:  { value in
+//                
+//                let alertView = UIAlertController(title: "RxExample", message: "Tapped `\(value)`", preferredStyle: .alert)
+//                alertView.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
+//                })
+//                self.present(alertView, animated: true, completion: nil)
+//                
+//            })
+            .subscribe(with: self, onNext: { owner, value in
                 
-                let alertView = UIAlertController(title: "RxExample", message: "Tapped `\(value)`", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
-                })
-                self.present(alertView, animated: true, completion: nil)
+                owner.presentAlert("Tapped `\(value)`")
                 
             })
             .disposed(by: disposeBag)
         
         tableView.rx
             .itemAccessoryButtonTapped
-            .subscribe(onNext: { indexPath in
+//            .subscribe(onNext: { indexPath in
+//                
+//                let alertView = UIAlertController(title: "RxExample", message: "Tapped Detail @ \(indexPath.section),\(indexPath.row)", preferredStyle: .alert)
+//                alertView.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
+//                })
+//                self.present(alertView, animated: true, completion: nil)
+//                
+////                DefaultWireframe.presentAlert("Tapped Detail @ \(indexPath.section),\(indexPath.row)")
+//            })
+            .subscribe(with: self, onNext: { owner, indexPath in
                 
-                let alertView = UIAlertController(title: "RxExample", message: "Tapped Detail @ \(indexPath.section),\(indexPath.row)", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
-                })
-                self.present(alertView, animated: true, completion: nil)
+                owner.presentAlert("Tapped Detail @ \(indexPath.section),\(indexPath.row)")
                 
-//                DefaultWireframe.presentAlert("Tapped Detail @ \(indexPath.section),\(indexPath.row)")
             })
             .disposed(by: disposeBag)
     }
     
 
     
+}
+
+extension SimpleTableViewController {
+    private func presentAlert(_ message: String) {
+        
+        let alertView = UIAlertController(title: "RxExample", message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
+        })
+        self.present(alertView, animated: true, completion: nil)
+        
+    }
 }

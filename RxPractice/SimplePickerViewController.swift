@@ -12,6 +12,8 @@ import SnapKit
 
 class SimplePickerViewController: UIViewController {
     
+    let viewModel = SimplePickerViewModel()
+    
     let disposeBag = DisposeBag()
     
     let picker1 = {
@@ -53,7 +55,7 @@ class SimplePickerViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(30)
         }
         
-        Observable.just([1, 2, 3])
+        viewModel.intArray
             .bind(to: picker1.rx.itemTitles) { _, item in
                 return "\(item)"
             }
@@ -66,7 +68,7 @@ class SimplePickerViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        Observable.just([1, 2, 3])
+        viewModel.intArray
             .bind(to: picker2.rx.itemAttributedTitles) { _, item in
                 return NSAttributedString(string: "\(item)",
                                           attributes: [
@@ -83,16 +85,16 @@ class SimplePickerViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        Observable.just([UIColor.red, UIColor.green, UIColor.blue])
+        viewModel.colorArray
             .bind(to: picker3.rx.items) { _, item, _ in
                 let view = UIView()
-                view.backgroundColor = item
+                view.backgroundColor = item.returnColor
                 return view
             }
             .disposed(by: disposeBag)
         
         picker3.rx
-            .modelSelected(UIColor.self)
+            .modelSelected(ColorEnum.self)
             .subscribe { value in
                 print("model selected 3: \(value)")
             }

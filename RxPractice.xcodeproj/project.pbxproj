@@ -18,6 +18,9 @@
 		8B3DDFC22AF0F4D3003F31ED /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8B3DDFC12AF0F4D3003F31ED /* RxCocoa */; };
 		8B3DDFC42AF0F4D3003F31ED /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B3DDFC32AF0F4D3003F31ED /* RxSwift */; };
 		8B3DDFC62AF10015003F31ED /* SimplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DDFC52AF10015003F31ED /* SimplePickerViewController.swift */; };
+		8B51FEFE2AF3DE8B009F1E50 /* SimpleTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51FEFD2AF3DE8B009F1E50 /* SimpleTableViewModel.swift */; };
+		8B51FF002AF3E12B009F1E50 /* SimplePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51FEFF2AF3E12B009F1E50 /* SimplePickerViewModel.swift */; };
+		8B51FF022AF3E1C4009F1E50 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51FF012AF3E1C4009F1E50 /* Enum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		8B3DDF8B2AF0E691003F31ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B3DDF962AF0ED5E003F31ED /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 		8B3DDFC52AF10015003F31ED /* SimplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewController.swift; sourceTree = "<group>"; };
+		8B51FEFD2AF3DE8B009F1E50 /* SimpleTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewModel.swift; sourceTree = "<group>"; };
+		8B51FEFF2AF3E12B009F1E50 /* SimplePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewModel.swift; sourceTree = "<group>"; };
+		8B51FF012AF3E1C4009F1E50 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,8 @@
 		8B3DDF7C2AF0E690003F31ED /* RxPractice */ = {
 			isa = PBXGroup;
 			children = (
+				8B51FF012AF3E1C4009F1E50 /* Enum.swift */,
+				8B51FEFC2AF3DE75009F1E50 /* ViewModel */,
 				8B3DDF962AF0ED5E003F31ED /* SimpleTableViewController.swift */,
 				8B3DDFC52AF10015003F31ED /* SimplePickerViewController.swift */,
 				8B3DDF7D2AF0E690003F31ED /* AppDelegate.swift */,
@@ -77,6 +85,15 @@
 				8B3DDF8B2AF0E691003F31ED /* Info.plist */,
 			);
 			path = RxPractice;
+			sourceTree = "<group>";
+		};
+		8B51FEFC2AF3DE75009F1E50 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8B51FEFD2AF3DE8B009F1E50 /* SimpleTableViewModel.swift */,
+				8B51FEFF2AF3E12B009F1E50 /* SimplePickerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,10 +177,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B3DDF822AF0E690003F31ED /* ViewController.swift in Sources */,
+				8B51FF002AF3E12B009F1E50 /* SimplePickerViewModel.swift in Sources */,
+				8B51FF022AF3E1C4009F1E50 /* Enum.swift in Sources */,
 				8B3DDF7E2AF0E690003F31ED /* AppDelegate.swift in Sources */,
 				8B3DDF802AF0E690003F31ED /* SceneDelegate.swift in Sources */,
 				8B3DDF972AF0ED5E003F31ED /* SimpleTableViewController.swift in Sources */,
 				8B3DDFC62AF10015003F31ED /* SimplePickerViewController.swift in Sources */,
+				8B51FEFE2AF3DE8B009F1E50 /* SimpleTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
